@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://static.runoob.com/assets/js/jquery-treeview/jquery.treeview.css" />
+    <link rel="stylesheet" href="https://static.runoob.com/assets/js/jquery-treeview/screen.css" />
+
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://static.runoob.com/assets/js/jquery-treeview/jquery.cookie.js"></script>
+    <script src="https://static.runoob.com/assets/js/jquery-treeview/jquery.treeview.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#browser").treeview({
+                toggle: function() {
+                    console.log("%s was toggled.", $(this).find(">span").text());
+                }
+            });
+
+            $("#add").click(function() {
+                var branches = $("<li><span class='folder'>New Sublist</span><ul>" +
+                    "<li><span class='file'>Item1</span></li>" +
+                    "<li><span class='file'>Item2</span></li></ul></li>").appendTo("#browser");
+                $("#browser").treeview({
+                    add: branches
+                });
+            });
+        });
+    </script>
+
+    <style>
+
+        table {
+            float: left;
+            width: 100%; /* 设置表格宽度为100% */
+            border-collapse: collapse;
+            margin: 5px 0; /* 设置一定的间距 */
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover{
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .showbranks{
+            margin-left: 20px;
+            width: 100%;
+        }
+        .mainss .opendatas {
+            margin-top: 30px;
+            margin-left: 20px;
+            display: inline-block;
+            width: 100%;
+
+        }
+        .mainss label, input, button {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .mainss input[type="text"], input[type="test"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box; /* 让输入框的宽度包括内边距和边框 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .mainss button {
+            margin-left: 40px;
+            width: 10%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .mainss button:hover {
+            background-color: #45a049;
+        }
+        .modal {
+            display: none;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+
+        .addmodal {
+            display: none;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .deletemodal {
+            display: none;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        body{
+            background-size: cover;
+        }
+        .mainss form button{
+            width: 30%;
+            display: inline-block;
+        }
+
+        .midshow{
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+
+        #showaddcontent{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 200px;
+            display: none;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+
+
+        .folder1 ul li{
+            font-size: 23px;
+            margin: 20px;
+        }
+        .folder1 li ul{
+
+        }
+        .folder1 li ul:hover{
+
+        }
+
+        .folder1 ul li:hover{
+        }
+        .folder1{
+            background-color: transparent;
+
+        }
+        .folder1 li ul{
+            background-color: transparent;
+
+        }
+        span{
+            color: crimson;
+        }
+        a{
+            text-decoration: none;
+        }
+        span{
+            font-size: 25px;
+        }
+
+         button{
+            background:transparent;	/*按钮背景透明*/
+            border-width:0;	/*边框透明*/
+            outline:none;	/*点击后没边框*/
+            font-size: 24px;
+
+        }
+         button:hover{
+             background-color: #45a049;
+        }
+
+         input{
+            width: 100%;
+            height: 40px;
+        }
+        form{
+            text-align: center;
+        }
+        form button{
+            margin-top: 20px;
+            width: 30%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 48px;
+        }
+        #showaddcontent{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 300px;
+            display: none;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #showaddcontentsss{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 300px;
+            display: none;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #delectcontent{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 300px;
+            display: none;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+
+        }
+        #updatacontent{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 300px;
+            display: none;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+
+        }
+
+        .folder{
+            color: #003366;
+
+        }
+
+
+        /* 选择第三列的单元格并设置右边框为无 */
+        td:nth-child(3) {
+            border-right: none;
+        }
+
+        /* 如果要选择第四列的单元格并设置左边框为无，也可以这样写 */
+        td:nth-child(4) {
+            border-left: none;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<div id="showaddcontent">
+    <form action="/select">
+        <input type="text"  name="name" placeholder="请输入要查询银行的名字">
+        <br><br>
+        <button style="margin: 10px" type="submit"  >确认</button>
+        <button style="margin: 10px" type="button" id="treeaddcancle" onclick="treefindconcle()">取消</button>
+    </form>
+</div>
+<div id="showaddcontentsss">
+    <form action="/insert">
+        <input type="text" name="branch_name" placeholder="请输入要更新的银行名字">
+        <input type="text" name="branch_city" placeholder="请输入要更新的银行的城市">
+        <input type="text" name="assets" placeholder="资产总额">
+        <br><br>
+        <button style="margin: 10px" type="submit"  >确认</button>
+        <button style="margin: 10px" type="button" onclick="treefindconcle1()">取消</button>
+    </form>
+</div>
+
+<div id="delectcontent">
+    <form action="/delete">
+        <input type="text" name="name" placeholder="请输入要删除的银行名字">
+        <br><br>
+        <button style="margin: 10px" type="submit"  >确认</button>
+        <button style="margin: 10px" type="button" onclick="treefindconcle2()">取消</button>
+    </form>
+</div>
+
+<div id="updatacontent">
+    <form action="/update">
+        <input type="text" name="branch_name" placeholder="请输入要更新的银行名字">
+        <input type="text" name="branch_city" placeholder="请输入要更新的银行的城市">
+        <input type="text" name="assets" placeholder="资产总额">
+        <br><br>
+        <button style="margin: 10px" type="submit"  >确认</button>
+        <button style="margin: 10px" type="button" onclick="treefindconcle3()">取消</button>
+    </form>
+</div>
+
+<div id="lefttree" style="height: 100%;width: 12%;display: inline-block" >
+        <ul id="browser" class="filetree treeview-famfamfam"  >
+            <li><span class="folder">商业银行系统</span>
+                <ul class="folder1" style="background-color: transparent;" >
+                    <li ><span class="folder" >支行管理</span>
+                        <ul >
+                            <li ><button onclick="showadd()" hidden  >查询支行信息</button></li>
+                        </ul>
+                        <ul>
+                            <li ><button onclick="showaddss()" hidden  >增加新的支行</button></li>
+                        </ul>
+                        <ul>
+                            <li ><button onclick="showdelete()" hidden  >删除支行信息</button></li>
+                        </ul>
+                        <ul>
+                            <li ><button onclick="showupdata()" hidden  >修改支行信息</button></li>
+                        </ul>
+                    </li>
+                    <li><span class="folder">雇员管理</span>
+                        <ul>
+                            <li><button >增加新的雇员 </button></li>
+                        </ul>
+
+                        <ul>
+                            <li><button >删除雇员信息 </button></li>
+
+                        </ul>
+                        <ul>
+                            <li><button >查找雇员信息 </button></li>
+
+                        </ul>
+
+                        <ul>
+                            <li><button >修改雇员信息 </button></li>
+
+                        </ul>
+
+                    </li>
+
+                    <li><span class="folder" >顾客管理</span>
+
+                        <ul>
+                            <li><a href="#" >增加新的顾客 </a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="#" >删除顾客信息 </a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" >查找顾客信息 </a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="#" >修改顾客信息 </a></li>
+                        </ul>
+
+                    </li>
+
+                    <li><span class="folder" >存款管理</span>
+
+                        <ul>
+                            <li><a href="#" >增加新的存款 </a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="#" >删除存款信息 </a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#" >查找存款信息 </a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="#" >修改存款信息 </a></li>
+                        </ul>
+
+                    </li>
+
+
+                    <li><span class="folder">贷款管理</span>
+                        <ul>
+                            <li><span class="folder">增加新的贷款</span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="folder">删除贷款信息</span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="folder">查找贷款信息</span></li>
+                        </ul>
+                        <ul>
+                            <li><span class="folder">修改贷款信息</span></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+<!--        <button id="add">Add!</button>-->
+</div>
+ <div class="mainss" style="height: 100%;width: 85%;display: inline-block;float: right">
+     <h1 style="margin: 0 auto;text-align: center; color: #4CAF50">欢迎来到支行管理系统</h1>
+     <!-- 使用一个包裹元素来容纳两个表格 -->
+
+     <!--    <form action="/delete" method="get">-->
+     <!--        <label>请输入要删除银行的名字</label>-->
+     <!--        <input name="name" type="text">-->
+     <!--        <button type="submit" >删除</button>-->
+     <!--    </form>-->
+
+     <!--    <form action="/insert" method="get">-->
+
+     <!--        <label>输入要添加银行的信息</label>-->
+     <!--        <input type="text" name="branch_name" placeholder="银行名字">-->
+     <!--        <input type="text" name="branch_city" placeholder="银行的城市">-->
+     <!--        <input type="text" name="assets" placeholder="银行的资产">-->
+     <!--        <button>添加</button>-->
+     <!--    </form>-->
+     <!-- 在合适的位置添加反馈信息的部分 -->
+
+     <div class="opendatas" style="display: inline-block">
+<!--         <form action="/select" style="display: inline-block" method="get">-->
+<!--             <input type="text" name="name" style="width: 200px;margin: 20px" placeholder="输入银行的名字进行查询">-->
+<!--&lt;!&ndash;             <button type="submit" style="width: 100px">查询</button>&ndash;&gt;-->
+<!--         </form>-->
+<!--         <form action="/selecbycity" style="display: inline-block" method="get">-->
+<!--             <input type="text" name="city" style="width: 200px" placeholder="按照银行所在的城市查询">-->
+<!--             <button type="submit" style="width: 100px">查询</button>-->
+<!--         </form>-->
+
+         <div id="deletemodal" class="deletemodal">
+             <form action="/delete" method="get">
+                 <input type="text" name="name" placeholder="请输入要删除的银行名字">
+                 <button style="display: inline-block;margin-left: 5px" type="submit" id="deleteconfirmBtn">确认</button>
+                 <button style="display: inline-block"  type="button" id="deletecancelBtn">取消</button>
+             </form>
+         </div>
+         <div id="addmodal" class="addmodal">
+             <form action="/insert" method="get">
+
+                 <input type="text" name="branch_name" placeholder="请输入要更新的银行名字">
+                 <input type="text" name="branch_city" placeholder="请输入要更新的银行的城市">
+                 <input type="text" name="assets" placeholder="资产总额">
+                 <button style="display: inline-block;margin-left: 5px" type="submit" id="addconfirmBtn">确认</button>
+                 <button style="display: inline-block"  type="button" id="addcancelBtn">取消</button>
+             </form>
+         </div>
+         <div id="modal" class="modal">
+             <form action="/update" method="get">
+
+                 <input type="text" name="branch_name" placeholder="请输入要更新的银行名字">
+                 <input type="text" name="branch_city" placeholder="请输入要更新的银行的城市">
+                 <input type="text" name="assets" placeholder="资产总额">
+                 <button style="display: inline-block;margin-left: 5px" type="submit" id="confirmBtn">确认</button>
+                 <button style="display: inline-block"  type="button" id="cancelBtn">取消</button>
+             </form>
+
+         </div>
+         <form action="/slectanyway" style="display: inline-block;
+        align-items: center;" method="get">
+             <input type="text" name="name" style="width: 200px;height: 48px;margin: 20px" placeholder="输入银行的名字进行查询">
+             <input type="text" name="city" style="width: 200px;height: 48px;margin-bottom: 20px;" placeholder="按照银行所在的城市查询">
+             <button type="submit" style="width: 100px">查询</button>
+         </form>
+
+         <button id="deleteModalBtn">删除银行数据</button>
+         <button id="addModalBtn">添加银行数据</button>
+         <button id="showModalBtn">更新银行数据</button>
+
+         <form action="/deletechoose" style="display: inline" >
+             <button style="width: 15%;display: inline-block"  >删除选中的银行数据</button>
+
+             <div class="showbranks" style="margin-top: 40px" >
+                 <table border="1" xmlns:th="http://www.w3.org/1999/xhtml">
+                     <tr style="font-size: 18px">
+                         <td style="font-size: 18px">银行名字</td>
+                         <td>城市</td>
+                         <td>资产</td>
+                     </tr>
+
+                     <tr th:each="stu:${stu}">
+                         <td th:text="${stu.branch_name}"></td>
+                         <td th:text="${stu.branch_city}"></td>
+                         <td th:text="${stu.assets}"></td>
+                         <td ><input th:value="${stu.branch_name}" type="checkbox" name="select_check"></td>
+                     </tr>
+                 </table>
+             </div>
+
+         </form>
+     </div>
+     <div th:if="${deleteSuccess}">
+         <div class="midshow">
+             <div class="modal-content">
+                 <p style="font-size: 28px; color: red;text-align: center">删除成功！</p>
+                 <form method="get" action="/selectall" style="margin-left: 20px">
+                     <button  type="submit" style="width: 40%;margin: 0;border: 0">确定</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <!--    Modal for Failure Message-->
+     <div th:if="${deleteSuccess} == false">
+         <div class="midshow">
+             <div class="modal-content">
+                 <p style="font-size: 28px; color: red;text-align: center">删除失败！！</p>
+                 <form method="get" action="/selectall" style="margin-left: 20px">
+                     <button  type="submit" style="width: 40%;margin: 0;border: 0">确定</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+
+     <div th:if="${addSuccess}">
+         <div class="midshow">
+             <div class="modal-content">
+
+                 <p style="font-size: 28px; color: red;text-align: center">添加成功！</p>
+                 <form method="get" action="/selectall" style="margin-left: 20px">
+                     <button  type="submit" style="width: 40%;margin: 0;border: 0">确定</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+     <!-- Modal for Failure Message -->
+     <div th:if="${addSuccess} == false">
+         <div class="midshow">
+             <div class="modal-content">
+                 <p style="font-size: 28px; color: red;text-align: center">添加失败！</p>
+                 <form method="get" action="/selectall" style="margin-left: 20px">
+                     <button  type="submit" style="width: 40%;margin: 0;border: 0">确定</button>
+                 </form>
+             </div>
+         </div>
+     </div>
+
+
+
+
+
+ </div>
+
+
+<script>
+
+    const showModalBtn = document.getElementById('showModalBtn');
+    const modal = document.getElementById('modal');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+
+    const addModalBtn = document.getElementById('addModalBtn');
+    const addmodal = document.getElementById('addmodal');
+    const addconfirmBtn = document.getElementById('addconfirmBtn');
+    const addcancelBtn = document.getElementById('addcancelBtn');
+
+    const deleteModalBtn = document.getElementById('deleteModalBtn');
+    const deletemodal = document.getElementById('deletemodal');
+    const deleteconfirmBtn = document.getElementById('deleteconfirmBtn');
+    const deletecancelBtn = document.getElementById('deletecancelBtn');
+
+
+
+    deleteModalBtn.addEventListener('click', () => {
+
+        deletemodal.style.display = 'block';
+
+    });
+
+    deleteconfirmBtn.addEventListener('click', () => {
+        // 处理确认按钮点击事件
+        deletemodal.style.display = 'none';
+    });
+
+    deletecancelBtn.addEventListener('click', () => {
+        // 处理取消按钮点击事件
+        deletemodal.style.display = 'none';
+
+    });
+
+
+    addModalBtn.addEventListener('click', () => {
+        addmodal.style.display = 'block';
+
+    });
+
+    addconfirmBtn.addEventListener('click', () => {
+        // 处理确认按钮点击事件
+        addmodal.style.display = 'none';
+    });
+
+    addcancelBtn.addEventListener('click', () => {
+        // 处理取消按钮点击事件
+        addmodal.style.display = 'none';
+
+    });
+
+
+
+    showModalBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+
+    });
+
+    confirmBtn.addEventListener('click', () => {
+        // 处理确认按钮点击事件
+        modal.style.display = 'none';
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        // 处理取消按钮点击事件
+        modal.style.display = 'none';
+
+
+    });
+
+    function showadd(){
+        const d = document.getElementById('showaddcontent');
+        d.style.display = 'block'
+    }
+    function treefindconcle(){
+        const d = document.getElementById('showaddcontent');
+        d.style.display = 'none';
+    }
+
+    function showaddss(){
+        const d = document.getElementById('showaddcontentsss');
+        d.style.display = 'block'
+    }
+
+    function treefindconcle1(){
+        const d = document.getElementById('showaddcontentsss');
+        d.style.display = 'none';
+    }delectcontent
+
+    function showdelete(){
+        const d = document.getElementById('delectcontent');
+        d.style.display = 'block'
+    }
+    function treefindconcle2(){
+        const d = document.getElementById('delectcontent');
+        d.style.display = 'none';
+    }
+
+    function showupdata(){
+        const d = document.getElementById('updatacontent');
+        d.style.display = 'block'
+    }
+    function treefindconcle3(){
+        const d = document.getElementById('updatacontent');
+        d.style.display = 'none';
+    }
+
+
+</script>
+</body>
+</html>

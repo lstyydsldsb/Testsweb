@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://static.runoob.com/assets/js/jquery-treeview/jquery.treeview.css" />
+    <link rel="stylesheet" href="https://static.runoob.com/assets/js/jquery-treeview/screen.css" />
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://static.runoob.com/assets/js/jquery-treeview/jquery.cookie.js"></script>
+    <script src="https://static.runoob.com/assets/js/jquery-treeview/jquery.treeview.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#browser").treeview({
+                toggle: function() {
+                    console.log("%s was toggled.", $(this).find(">span").text());
+                }
+            });
+
+            $("#add").click(function() {
+                var branches = $("<li><span class='folder'>New Sublist</span><ul>" +
+                    "<li><span class='file'>Item1</span></li>" +
+                    "<li><span class='file'>Item2</span></li></ul></li>").appendTo("#browser");
+                $("#browser").treeview({
+                    add: branches
+                });
+            });
+        });
+    </script>
+    <style>
+        .folder1 ul li{
+            font-size: 23px;
+            margin: 20px;
+        }
+        .folder1 li ul{
+
+        }
+        .folder1 li ul:hover{
+
+        }
+
+
+        .folder1 ul li:hover{
+
+
+
+        }
+        .folder1{
+            background-color: transparent;
+
+        }
+        .folder1 li ul{
+            background-color: transparent;
+
+        }
+        span{
+            color: crimson;
+
+        }
+        a{
+
+            text-decoration: none;
+        }
+        span{
+            font-size: 25px;
+        }
+        button{
+            background:transparent;	/*按钮背景透明*/
+            border-width:0;	/*边框透明*/
+            outline:none;	/*点击后没边框*/
+            font-size: 24px;
+        }
+        button:hover{
+            background: pink;
+        }
+        #showaddcontent{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 200px;
+            display: none;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        input{
+            width: 100%;
+            height: 30px;
+        }
+        form{
+            text-align: center;
+        }
+        form button{
+            margin-top: 20px;
+            width: 40%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 48px;
+        }
+
+
+    </style>
+
+    <script>
+        function showadd(){
+            const d = document.getElementById('showaddcontent');
+            d.style.display = 'block'
+        }
+    </script>
+
+</head>
+<body>
+
+<div id="showaddcontent">
+    <form action="/select">
+        <input type="text"  name="name" placeholder="请输入要查询银行的名字">
+        <br><br>
+        <button style="margin: 10px">确认</button>
+        <button style="margin: 10px">取消</button>
+    </form>
+</div>
+
+
+<div class="lefttree">
+    <ul id="browser" class="filetree treeview-famfamfam"  >
+        <li><span class="folder">商业银行系统</span>
+            <ul class="folder1" style="background-color: transparent;" >
+                <li ><span class="folder">支行管理</span>
+                    <ul >
+                        <li ><button onclick="showadd()" >增加新的支行</button></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >删除支行信息 </a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#" >查找支行信息 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >修改支行信息 </a></li>
+                    </ul>
+
+                </li>
+
+
+                <li><span class="folder" >雇员管理</span>
+
+                    <ul>
+                        <li><a href="#" >增加新的雇员 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >删除雇员信息 </a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#" >查找雇员信息 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >修改雇员信息 </a></li>
+                    </ul>
+
+                </li>
+
+                <li><span class="folder" >顾客管理</span>
+
+                    <ul>
+                        <li><a href="#" >增加新的顾客 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >删除顾客信息 </a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#" >查找顾客信息 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >修改顾客信息 </a></li>
+                    </ul>
+
+                </li>
+
+                <li><span class="folder" >存款管理</span>
+
+                    <ul>
+                        <li><a href="#" >增加新的存款 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >删除存款信息 </a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#" >查找存款信息 </a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="#" >修改存款信息 </a></li>
+                    </ul>
+
+                </li>
+
+
+                <li><span class="folder">贷款管理</span>
+                    <ul>
+                        <li><span class="folder">增加新的贷款</span></li>
+                    </ul>
+                    <ul>
+                        <li><span class="folder">删除贷款信息</span></li>
+                    </ul>
+                    <ul>
+                        <li><span class="folder">查找贷款信息</span></li>
+                    </ul>
+                    <ul>
+                        <li><span class="folder">修改贷款信息</span></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+    </ul>
+    <button id="add">Add!</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Page Title</title>
+    <style>
+        /* 添加一个新的样式块用于调整两个表格的布局 */
+        .table-container {
+            display: flex; /* 使用flex布局 */
+            flex-direction: column; /* 垂直排列子元素 */
+            align-items: center; /* 在交叉轴上居中对齐 */
+        }
+
+
+
+        table {
+            float: left;
+            width: 100%; /* 设置表格宽度为100% */
+            border-collapse: collapse;
+            margin: 5px 0; /* 设置一定的间距 */
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover{
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .showbranks{
+            margin-left: 20px;
+            width: 100%;
+        }
+        .opendatas {
+            margin-top: 30px;
+            margin-left: 20px;
+            display: inline-block;
+            width: 100%;
+
+        }
+        label, input, button {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="test"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box; /* 让输入框的宽度包括内边距和边框 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-left: 40px;
+            width: 10%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .modal {
+            display: none;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+
+        .addmodal {
+            display: none;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .deletemodal {
+
+            display: none;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        body{
+
+            background-size: cover;
+        }
+        form button{
+            width: 30%;
+            display: inline-block;
+        }
+
+        .midshow{
+
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+
+        }
+
+    </style>
+
+</head>
+<body>
+<div > </div>
+<h1 style="margin: 0 auto;text-align: center; color: #4CAF50">欢迎来到支行管理系统</h1>
+<!-- 使用一个包裹元素来容纳两个表格 -->
+
+<!--    <form action="/delete" method="get">-->
+<!--        <label>请输入要删除银行的名字</label>-->
+<!--        <input name="name" type="text">-->
+<!--        <button type="submit" >删除</button>-->
+<!--    </form>-->
+
+<!--    <form action="/insert" method="get">-->
+
+<!--        <label>输入要添加银行的信息</label>-->
+<!--        <input type="text" name="branch_name" placeholder="银行名字">-->
+<!--        <input type="text" name="branch_city" placeholder="银行的城市">-->
+<!--        <input type="text" name="assets" placeholder="银行的资产">-->
+<!--        <button>添加</button>-->
+<!--    </form>-->
+    <!-- 在合适的位置添加反馈信息的部分 -->
+<div class="opendatas">
+    <form action="/select" style="display: inline-block" method="get">
+        <input type="text" name="name" style="width: 200px" placeholder="输入银行的名字进行查询">
+        <button type="submit" style="width: 100px">查询</button>
+    </form>
+
+    <form action="/selecbycity" style="display: inline-block" method="get">
+        <input type="text" name="city" style="width: 200px" placeholder="按照银行所在的城市查询">
+        <button type="submit" style="width: 100px">查询</button>
+    </form>
+
+
+    <button id="deleteModalBtn">删除银行数据</button>
+
+    <button id="addModalBtn">添加银行数据</button>
+
+    <button id="showModalBtn">更新银行数据</button>
+
+
+    <div id="deletemodal" class="deletemodal">
+        <form action="/delete" method="get">
+            <input type="text" name="name" placeholder="请输入要删除的银行名字">
+            <button style="display: inline-block" type="submit" id="deleteconfirmBtn">确认</button>
+            <button style="display: inline-block"  type="button" id="deletecancelBtn">取消</button>
+        </form>
+    </div>
+
+
+
+    <div id="addmodal" class="addmodal">
+        <form action="/insert" method="get">
+            <input type="text" name="branch_name" placeholder="请输入要更新的银行名字">
+            <input type="text" name="branch_city" placeholder="请输入要更新的银行的城市">
+            <input type="text" name="assets" placeholder="资产总额">
+            <button style="display: inline-block" type="submit" id="addconfirmBtn">确认</button>
+            <button style="display: inline-block"  type="button" id="addcancelBtn">取消</button>
+        </form>
+    </div>
+
+    <br>
+
+    <div id="modal" class="modal">
+        <form action="/update" method="get">
+
+            <input type="text" name="branch_name" placeholder="请输入要更新的银行名字">
+            <input type="text" name="branch_city" placeholder="请输入要更新的银行的城市">
+            <input type="text" name="assets" placeholder="资产总额">
+            <button style="display: inline-block" type="submit" id="confirmBtn">确认</button>
+            <button style="display: inline-block"  type="button" id="cancelBtn">取消</button>
+        </form>
+
+    </div>
+
+
+
+    <div th:if="${deleteSuccess}">
+        <div class="midshow">
+            <div class="modal-content">
+                <p style="font-size: 28px; color: red;text-align: center">删除成功！</p>
+                <form method="get" action="/selectall" style="margin-left: 70px">
+                    <button  type="submit" >确定</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--    Modal for Failure Message-->
+    <div th:if="${deleteSuccess} == false">
+        <div class="midshow">
+            <div class="modal-content">
+                <p style="font-size: 28px; color: red;text-align: center">删除失败！！</p>
+                <form method="get" action="/selectall" style="margin-left: 70px">
+                    <button  type="submit">确定</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${addSuccess}">
+        <div class="midshow">
+        <div class="modal-content">
+
+            <p style="font-size: 28px; color: red;text-align: center">添加成功！</p>
+            <form method="get" action="/selectall" style="margin-left: 70px">
+                <button  type="submit">确定</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    <!-- Modal for Failure Message -->
+    <div th:if="${addSuccess} == false">
+      <div class="midshow">
+          <div class="modal-content">
+              <p style="font-size: 28px; color: red;text-align: center">添加失败！</p>
+              <form method="get" action="/selectall" style="margin-left: 70px">
+                  <button  type="submit" style="margin-left: 20px">确定</button>
+              </form>
+          </div>
+      </div>
+    </div>
+
+
+
+
+</div>
+
+<div class="showbranks" style="margin-top: 100px">
+    <table border="1" xmlns:th="http://www.w3.org/1999/xhtml">
+        <tr>
+            <td >银行名字</td>
+            <td>城市</td>
+            <td>资产</td>
+        </tr>
+
+        <tr th:each="stu:${stu}">
+            <td th:text="${stu.branch_name}"></td>
+            <td th:text="${stu.branch_city}"></td>
+            <td th:text="${stu.assets}"></td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script>
+    const showModalBtn = document.getElementById('showModalBtn');
+    const modal = document.getElementById('modal');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+
+    const addModalBtn = document.getElementById('addModalBtn');
+    const addmodal = document.getElementById('addmodal');
+    const addconfirmBtn = document.getElementById('addconfirmBtn');
+    const addcancelBtn = document.getElementById('addcancelBtn');
+
+    const deleteModalBtn = document.getElementById('deleteModalBtn');
+    const deletemodal = document.getElementById('deletemodal');
+    const deleteconfirmBtn = document.getElementById('deleteconfirmBtn');
+    const deletecancelBtn = document.getElementById('deletecancelBtn');
+
+
+
+    deleteModalBtn.addEventListener('click', () => {
+
+        deletemodal.style.display = 'block';
+
+    });
+
+    deleteconfirmBtn.addEventListener('click', () => {
+        // 处理确认按钮点击事件
+        deletemodal.style.display = 'none';
+    });
+
+    deletecancelBtn.addEventListener('click', () => {
+        // 处理取消按钮点击事件
+        deletemodal.style.display = 'none';
+
+    });
+
+
+    addModalBtn.addEventListener('click', () => {
+        addmodal.style.display = 'block';
+
+    });
+
+    addconfirmBtn.addEventListener('click', () => {
+        // 处理确认按钮点击事件
+        addmodal.style.display = 'none';
+    });
+
+    addcancelBtn.addEventListener('click', () => {
+        // 处理取消按钮点击事件
+        addmodal.style.display = 'none';
+
+    });
+
+
+
+    showModalBtn.addEventListener('click', () => {
+        modal.style.display = 'block';
+
+    });
+
+    confirmBtn.addEventListener('click', () => {
+        // 处理确认按钮点击事件
+        modal.style.display = 'none';
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        // 处理取消按钮点击事件
+        modal.style.display = 'none';
+
+
+    });
+
+
+</script>
+
+
+</body>
+</html>

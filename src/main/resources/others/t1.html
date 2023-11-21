@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+
+    <style type="text/css">
+        /*初始化属性*/
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-image: url("../image/register.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .mainPart{
+            width: 1000px;
+            height: 500px;
+            border: 4px solid #ebe5ff;
+            margin: 90px auto auto;
+        }
+
+        .explain{
+            float: left;
+        }
+
+        /*设置第一个P标签*/
+        .explain p:first-child{
+            color: #ff956e;
+            font-size: 25px;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        /*设置最后一个P标签*/
+        .explain p:last-child{
+            margin-left: 10px;
+        }
+
+        .tableArea{
+            float: left;
+            width:500px;
+            height:400px;
+            margin-left: 70px;
+            margin-top: 50px;
+        }
+        /*设置图片*/
+        #picture{
+            position: absolute;
+            z-index: -1;
+            opacity: 0.5;
+            width: 995px;
+            height:495px;
+        }
+
+        .rightTip{
+            float: right;
+        }
+        .rightTip a{
+            color: #ff94d7;
+            text-decoration: none;
+        }
+        .rightTip a:hover{
+            color: #ff3b31;
+        }
+
+
+        /*中间的div的表单区域设置*/
+        .tableData{
+            width: 400px;
+            height: 350px;
+            margin: auto;
+        }
+        /*设置fieldset*/
+        fieldset{
+            height: 396px;
+        }
+        /*设置表格*/
+        .dataTableLeft{
+            width: 80px;
+            text-align: right;
+        }
+        .dataTableRight{
+            padding-left: 20px;
+        }
+
+        /*设置输入框*/
+        #username,#password,#perName,#phoneNumber,#number,#date,#email{
+            border: 1px solid rgba(203,197,198,0.03);
+            border-radius: 5px;
+            height: 27px;
+            width:235px;
+            padding-left: 5px;
+        }
+
+        /*设置提交按钮*/
+        #sub{
+            width: 120px;
+            height: 40px;
+            background-color: rgba(84,83,87,0.11);
+            border: 1px solid #faf7f7;
+            border-radius: 10px;
+            color: #deebff;
+        }
+        .subTd{
+            text-align: center;
+        }
+
+        /*单独设置验证码框*/
+        #number{
+            width:100px;
+        }
+        /*单独设置验证码图片*/
+        #numberPicture{
+            /*设置垂直居中*/
+            vertical-align: middle;
+            width:130px;
+            height:35px;
+        }
+        /*单独设置性别选择框旁边的文字*/
+        .sex{
+            font-size: 18px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="mainPart">
+
+    <div class="explain">
+        <p>新用户注册</p>
+        <p>USER REGISTER</p>
+    </div>
+    <div class="tableArea">
+        <form method="post">
+            <fieldset>
+                <legend>新用户注册</legend>
+                <table class="tableData">
+                    <tr>
+                        <td class="dataTableLeft"><label>用户名</label></td>
+                        <td  class="dataTableRight">
+                            <input type="text" placeholder="请输入用户名"
+                                   id="username" required="required" min="3" max="8">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="dataTableLeft"><label>密码</label></td>
+                        <td class="dataTableRight"><input type="password" placeholder="请输入密码"
+                                                          id="password" required="required"></td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="dataTableLeft"><label>Email</label></td>
+                        <td class="dataTableRight"><input type="email"
+                                                          id="email" placeholder="请输入邮箱"></td>
+                    </tr>
+
+                    <tr>
+
+                        <td class="dataTableLeft"><label>姓名</label></td>
+                        <td class="dataTableRight"><input type="text" placeholder="请输入姓名"
+                                                          id="perName" required="required"></td>
+                    </tr>
+
+                    <tr>
+
+                        <td class="dataTableLeft"><label>手机号</label></td>
+                        <td class="dataTableRight">
+                            <input type="text" placeholder="请输入手机号码"
+                                   id="phoneNumber" required="required" min="3" max="11">
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="dataTableLeft"><label>性别</label></td>
+                        <td class="dataTableRight">
+
+                            <input type="radio" value="男"  name="sex"><samp class="sex">男</samp>
+                            <input type="radio" value="女" name="sex"><samp class="sex">女</samp>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td class="dataTableLeft"><label>出生日期</label></td>
+                        <td class="dataTableRight"><input type="date" id="date"></td>
+                    </tr>
+
+                    <tr>
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td  class="subTd" colspan="2">
+                            <input type="submit" value="注册" >
+                        </td>
+                    </tr>
+
+                </table>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="rightTip">
+        <p>已有账号？<a href="#">立即登入</a> </p>
+    </div>
+
+
+</div>
+</body>
+</html>
