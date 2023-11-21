@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5e38a2c-5204-46e2-8993-c68ce099448d" name="默认变更列表" comment="Web项目">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ldu/Testdemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ldu/Testdemo.java" afterDir="false" />
-    </list>
+    <list default="true" id="d5e38a2c-5204-46e2-8993-c68ce099448d" name="默认变更列表" comment="第二次提交" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +177,7 @@
       <workItem from="1700468020483" duration="4282000" />
       <workItem from="1700472930656" duration="154000" />
       <workItem from="1700473476102" duration="138000" />
-      <workItem from="1700551496911" duration="2367000" />
+      <workItem from="1700551496911" duration="2917000" />
     </task>
     <task id="LOCAL-00001" summary="Web项目">
       <created>1700555994387</created>
@@ -189,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700555994387</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="第二次提交">
+      <created>1700556305374</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700556305374</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +223,7 @@
     </ignored-roots>
     <MESSAGE value="我的发" />
     <MESSAGE value="Web项目" />
-    <option name="LAST_COMMIT_MESSAGE" value="Web项目" />
+    <MESSAGE value="第二次提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="第二次提交" />
   </component>
 </project>
